@@ -20,8 +20,14 @@ _Task Escritor {
         }
 
     public:
+        //constructor
         Escritor( BufferImagen &buf, int c) : buffer(buf), cantidad_imagenes(c){}
 
+        /*
+        *Entrada: Una imagen
+        *Salida: imagen escrita
+        *Resumen: Funcion que escribe la imagen BMP modificada.
+        */
         void writeBmp(Imagen img){
 
             string imagen= "imagen_";

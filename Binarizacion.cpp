@@ -23,9 +23,15 @@ _Task Binarizacion {
 
 
     public:
+        //constructor
         Binarizacion( BufferImagen &buf, BufferImagen &buf2, int u, int c) :
                 buffer(buf),bufferSalida(buf2),umbral(u), cantidad_imagenes(c) {}
 
+        /*
+        *Entrada: Una imagen
+        *Salida: Una imagen modificada
+        *Resumen: Funcion que transforma cada uno de los pixeles en negro o blanco segun un umbral.
+        */
         Imagen binarizar(Imagen img){
             for(int i =0; i< img.getInfo().getImgsize(); i = i + (img.getInfo().getBpp()/8)){
                 if(img.getImgdata()[i] > umbral){

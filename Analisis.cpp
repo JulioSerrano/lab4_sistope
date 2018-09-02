@@ -27,6 +27,12 @@ _Task Analisis {
                 buffer(buf),bufferSalida(buf2),umbral(u), cantidad_imagenes(c), flag(b){}
 
 
+
+        /*
+        *Entrada:Una imagen
+        *Salida: muestra resultados por pantalla
+        *Resumen: Funcion que muestra por pantalla si una imagen cumple con el umbral de clasificacion indicado.
+        */        
         void analizar(Imagen img){
 
             float count_black, count_white, percent_black, percent_white;

@@ -2,6 +2,7 @@
 
 using std::vector;
 
+//buffer que contendrá las imagenes
 _Monitor BufferImagen {
     uCondition full, empty;
     int front, back, count,size;
@@ -9,12 +10,14 @@ _Monitor BufferImagen {
 
 
     public:
+        //constructor
         BufferImagen() : front(0), back(0),count(0){}
 
         _Nomutex int query(){
             return count;
         }
 
+        //funcion que inserta una imagen en el buffer
         void insert(Imagen imagen){
             if(count == size) empty.wait();
 
@@ -24,6 +27,7 @@ _Monitor BufferImagen {
             full.signal();
         }
 
+        //funcion que obtiene una imagen del buffer
         Imagen remove(){
             if(count == 0) full.wait();
 
@@ -34,7 +38,7 @@ _Monitor BufferImagen {
             return imagen;
         }
 
-
+        //funcion que da tamaño al buffer
         void setSize(int cantidad_imagenes){
             size = cantidad_imagenes;
             imagenes.reserve(cantidad_imagenes);

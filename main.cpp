@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 
     int umbral = 0, umbral_clas = 0, num_imagenes = 0, b_flag = 0, num_imagenes_buffer = 0;
 
+
     int c;
     opterr = 0;
     while ((c = getopt (argc, argv, "c:u:n:B:b")) != -1)
@@ -59,16 +60,17 @@ int main(int argc, char** argv)
             abort ();
     }
 
+    //se inicializan los buffers necesarios para los procesos
     BufferImagen lector_escalaGris;
     BufferImagen escalaGris_binarizacion;
     BufferImagen binarizacion_analisis;
     BufferImagen analisis_escritor;
 
+    //Se ingresa la cantidad de imagenes que determina el tamaño del buffer
     lector_escalaGris.setSize(num_imagenes_buffer);
     escalaGris_binarizacion.setSize(num_imagenes_buffer);
     binarizacion_analisis.setSize(num_imagenes_buffer);
     analisis_escritor.setSize(num_imagenes_buffer);
-
 
     if(b_flag==1){
         cout << "|---------------|--------------------|" << endl;
@@ -76,7 +78,7 @@ int main(int argc, char** argv)
         cout << "|---------------|--------------------|" << endl;
     }
 
-
+    //se inician las tareas concurrentes ingresando como parametro los buffers correspondientes
     Lector lector(lector_escalaGris,num_imagenes);
     EscalaDeGrises escalaDeGrises(lector_escalaGris,escalaGris_binarizacion,num_imagenes);
     Binarizacion binarizacion(escalaGris_binarizacion, binarizacion_analisis, umbral,num_imagenes);
